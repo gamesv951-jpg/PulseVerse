@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="description" content="PulseVerse Deluxe - Avatar customization and social gaming platform">
+<meta name="theme-color" content="#08081a">
+<title>PulseVerse Deluxe</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ONBOARDING MODAL -->
+<div id="onboarding">
+  <div class="ob-card">
+    <div class="ob-title">🌟 PulseVerse</div>
+    <div class="ob-sub">Bem-vindo ao mundo digital</div>
+    
+    <div class="ob-steps">
+      <div class="ob-dot active"></div>
+      <div class="ob-dot"></div>
+      <div class="ob-dot"></div>
+      <div class="ob-dot"></div>
+      <div class="ob-dot"></div>
+    </div>
+
+    <!-- Step 1: Name -->
+    <div class="ob-step active">
+      <label class="lbl">Seu Nome</label>
+      <input type="text" id="ob-name" class="ob-input" placeholder="Digite seu apelido" maxlength="20">
+    </div>
+
+    <!-- Step 2: Avatar Body -->
+    <div class="ob-step">
+      <label class="lbl">Tipo de Corpo</label>
+      <div class="body-grid">
+        <div class="body-card" data-body="humanoid">
+          <span class="bc-icon">🧑</span>
+          <div style="font-size:9px">Humanóide</div>
+        </div>
+        <div class="body-card" data-body="android">
+          <span class="bc-icon">🤖</span>
+          <div style="font-size:9px">Android</div>
+        </div>
+        <div class="body-card" data-body="alien">
+          <span class="bc-icon">👽</span>
+          <div style="font-size:9px">Alienígena</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Skin Color -->
+    <div class="ob-step">
+      <label class="lbl">Cor da Pele</label>
+      <div class="swatch-row">
+        <div class="swatch selected" style="background:#fdbcb4" data-color="#fdbcb4"></div>
+        <div class="swatch" style="background:#f0a383" data-color="#f0a383"></div>
+        <div class="swatch" style="background:#d4a574" data-color="#d4a574"></div>
+        <div class="swatch" style="background:#a0826d" data-color="#a0826d"></div>
+        <div class="swatch" style="background:#6d3a1a" data-color="#6d3a1a"></div>
+        <div class="swatch" style="background:#80d5ff" data-color="#80d5ff"></div>
+        <div class="swatch" style="background:#ff6bb6" data-color="#ff6bb6"></div>
+        <div class="swatch" style="background:#00ff88" data-color="#00ff88"></div>
+      </div>
+    </div>
+
+    <!-- Step 4: Hair -->
+    <div class="ob-step">
+      <label class="lbl">Cabelo</label>
+      <div class="hair-grid">
+        <div class="hair-card selected" data-hair="short">Curto</div>
+        <div class="hair-card" data-hair="medium">Médio</div>
+        <div class="hair-card" data-hair="long">Longo</div>
+        <div class="hair-card" data-hair="afro">Afro</div>
+      </div>
+      <label class="lbl" style="margin-top:12px">Cor do Cabelo</label>
+      <div class="swatch-row">
+        <div class="swatch selected" style="background:#2c2c2c" data-haircolor="#2c2c2c"></div>
+        <div class="swatch" style="background:#8b4513" data-haircolor="#8b4513"></div>
+        <div class="swatch" style="background:#ff6b35" data-haircolor="#ff6b35"></div>
+        <div class="swatch" style="background:#ffd700" data-haircolor="#ffd700"></div>
+        <div class="swatch" style="background:#ff00ff" data-haircolor="#ff00ff"></div>
+        <div class="swatch" style="background:#00ffff" data-haircolor="#00ffff"></div>
+      </div>
+    </div>
+
+    <!-- Step 5: Room -->
+    <div class="ob-step">
+      <label class="lbl">Sua Sala Inicial</label>
+      <div class="room-grid">
+        <div class="room-card selected" data-room="bedroom">
+          <div class="rc-preview">🛏️</div>
+          <div class="rc-name">Quarto</div>
+        </div>
+        <div class="room-card" data-room="office">
+          <div class="rc-preview">🏢</div>
+          <div class="rc-name">Escritório</div>
+        </div>
+        <div class="room-card" data-room="lounge">
+          <div class="rc-preview">🛋️</div>
+          <div class="rc-name">Lounge</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar Preview -->
+    <div class="av-preview-wrap">
+      <canvas id="ob-avatar-preview" width="100" height="100"></canvas>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-row-ob" id="ob-btn-row">
+      <button class="ob-btn" id="ob-next">Próximo →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN GAME -->
+<div id="game">
+  <!-- TOP HUD -->
+  <div id="top-hud">
+    <div class="hud-avatar-mini">
+      <canvas id="hud-avatar" width="30" height="30"></canvas>
+    </div>
+    <div class="hud-name-block">
+      <div class="hud-name" id="hud-name">User</div>
+      <div class="hud-nobility" id="hud-nobility">Novato</div>
+    </div>
+    <div class="hud-level-block">
+      <div class="hud-level-val" id="hud-level">1</div>
+      <div class="hud-level-lbl">LVL</div>
+    </div>
+    <div class="hud-bars">
+      <div class="hud-bar-row">
+        <div class="hud-bar-ico">⭐</div>
+        <div class="hud-bar">
+          <div class="hud-bar-fill hud-xp-f" id="hud-xp-fill"></div>
+        </div>
+        <div class="hud-bar-txt" id="hud-xp-txt">0/100</div>
+      </div>
+      <div class="hud-bar-row">
+        <div class="hud-bar-ico">⚡</div>
+        <div class="hud-bar">
+          <div class="hud-bar-fill hud-en-f" id="hud-en-fill"></div>
+        </div>
+        <div class="hud-bar-txt" id="hud-en-txt">100/100</div>
+      </div>
+    </div>
+    <div class="hud-currencies">
+      <div class="hud-coin">
+        <span style="font-size:11px">💎</span>
+        <span class="hud-coin-val" id="hud-coins">0</span>
+      </div>
+      <div class="hud-coin">
+        <span style="font-size:11px">🪙</span>
+        <span class="hud-coin-val" id="hud-gold">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORLD -->
+  <div id="world">
+    <div id="world-camera">
+      <div id="world-inner"></div>
+    </div>
+  </div>
+
+  <!-- ZOOM CONTROLS -->
+  <div id="zoom-controls">
+    <button class="zoom-btn" id="zoom-in">+</button>
+    <button class="zoom-btn" id="zoom-out">−</button>
+  </div>
+
+  <!-- CHAT HISTORY -->
+  <div id="chat-history"></div>
+
+  <!-- CHAT BAR -->
+  <div id="chat-bar">
+    <input type="text" id="chat-input" class="ob-input" placeholder="Escreva uma mensagem..." maxlength="100">
+    <button id="chat-send">📤</button>
+  </div>
+
+  <!-- EMOTE STRIP -->
+  <div id="emote-strip">
+    <button class="em-btn" data-emote="😂">😂</button>
+    <button class="em-btn" data-emote="😍">😍</button>
+    <button class="em-btn" data-emote="👏">👏</button>
+    <button class="em-btn" data-emote="🎉">🎉</button>
+  </div>
+
+  <!-- ROOM POPUP -->
+  <div id="room-popup"></div>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <button class="sb-btn" id="sb-profile" data-section="profile">
+      <span class="sb-icon">👤</span>
+      <span class="sb-label">Perfil</span>
+    </button>
+    <button class="sb-btn" id="sb-inventory" data-section="inventory">
+      <span class="sb-icon">🎒</span>
+      <span class="sb-label">Inventário</span>
+      <span class="sb-badge" id="inv-badge" style="display:none">0</span>
+    </button>
+    <button class="sb-btn" id="sb-shop" data-section="shop">
+      <span class="sb-icon">🛍️</span>
+      <span class="sb-label">Loja</span>
+    </button>
+    <button class="sb-btn" id="sb-rooms" data-section="rooms">
+      <span class="sb-icon">🏠</span>
+      <span class="sb-label">Salas</span>
+    </button>
+    <button class="sb-btn" id="sb-decor" data-section="decor">
+      <span class="sb-icon">✨</span>
+      <span class="sb-label">Decor</span>
+    </button>
+    <div class="sb-sep"></div>
+    <button class="sb-btn" id="sb-quests" data-section="quests">
+      <span class="sb-icon">📜</span>
+      <span class="sb-label">Missões</span>
+    </button>
+    <button class="sb-btn" id="sb-friends" data-section="friends">
+      <span class="sb-icon">👥</span>
+      <span class="sb-label">Amigos</span>
+    </button>
+    <button class="sb-btn" id="sb-settings" data-section="settings">
+      <span class="sb-icon">⚙️</span>
+      <span class="sb-label">Config</span>
+    </button>
+    <div class="sb-sep"></div>
+    <div id="sb-nobility">👑</div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <button class="modal-x" id="modal-close">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>

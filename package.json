@@ -1,0 +1,56 @@
+{
+  "name": "pulsverse-deluxe",
+  "version": "1.0.0",
+  "description": "PulseVerse Deluxe - An immersive avatar customization and social gaming platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "open http://localhost:8000 && npm start",
+    "build": "echo 'Build script - minify and bundle'",
+    "test": "echo 'Test suite - run all tests'"
+  },
+  "keywords": [
+    "game",
+    "social",
+    "avatar",
+    "customization",
+    "web",
+    "multiplayer",
+    "browser",
+    "deluxe"
+  ],
+  "author": "gamesv951-jpg",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gamesv951-jpg/PulseVerse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gamesv951-jpg/PulseVerse/issues"
+  },
+  "homepage": "https://github.com/gamesv951-jpg/PulseVerse#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "features": {
+    "avatar-customization": true,
+    "room-system": true,
+    "chat-system": true,
+    "inventory": true,
+    "shop": true,
+    "quests": true,
+    "friends": true,
+    "multiplayer": false,
+    "backend": false
+  }
+}
